@@ -98,193 +98,6 @@ $unit='$';
 <script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-switch.min.js"></script>
 <script type="text/javascript">
-function multiply(string1)
-{
-	//var cash=document.getElementById('cash').value;
-//	if(cash>=500)
-//		{
-//			document.getElementById('cash').value=50;
-//			
-//		}
-
-	var cash=document.getElementById('cash').value;
-	
-//	var price=document.getElementById('price').value;
-//	if(price>500)
-//		{
-//			document.getElementById('price').value=50;
-//			
-//		}
-	
-	var price=document.getElementById('price').value;
-	
-	//var count=document.getElementById('count').value;
-//	if(count>2)
-//		{
-//			document.getElementById('count').value=2;
-//			
-//		}
-	
-	var count=document.getElementById('count').value;
-	
-	//var rate=document.getElementById('rate').value;
-//	if(rate>75)
-//		{
-//			document.getElementById('rate').value=75;
-//			
-//		}
-		
-	var rate=document.getElementById('rate').value/100;
-	
-	//var vclick=document.getElementById('vclick').value;
-//	if(vclick>10)
-//		{
-//			document.getElementById('vclick').value=10;
-//			var vclick=document.getElementById('vclick').value;
-//		}
-		var vclick=document.getElementById('vclick').value;
-
-
-		
-if(cash==0)
-{
-	
-
-	tmp.slider('setValue',cash);
-}
-
-		
-if(price==0)
-{
-	price=1;
-}
-
-		
-if(count==0)
-{
-	count=1;
-}
-		
-if(rate==0)
-{
-	rate=0.01;
-}
-		
-if(vclick==0)
-{
-	vclick=1;
-}
-
-	switch (string1)
-		{
- 		 case 'cash':
-					 if($('#fprice').is(":checked")==false)
-					 {
-								document.getElementById('price').value=Math.round(cash/count,3);
-					}
-					
-					if($('#fcount').is(":checked")==false) 
-					{
-						document.getElementById('count').value=Math.round(cash/price);
-						
-						if($('#fclick').is(":checked")==false) 
-						{
-							document.getElementById('vclick').value=Math.round((document.getElementById('count').value)/rate,3);
-						}
-					
-						if($('#frate').is(":checked")==false)
-						{
-							document.getElementById('rate').value= Math.round((document.getElementById('count').value)/vclick,3);
-						}
-					}
-					  break;
-					  
-					  
-  		case 'price':  if($('#fcash').is(":checked")==false) 
-						{
-							document.getElementById('cash').value=Math.round(count*price,3);
-									 
-						}
-						
-						if($('#fcount').is(":checked")==false) 
-						{
-							document.getElementById('count').value=Math.round((document.getElementById('cash').value)/price,3);
-							
-							if($('#fclick').is(":checked")==false) 
-							{
-								document.getElementById('vclick').value=Math.round((document.getElementById('count').value)/rate,3);
-							}
-							
-							if($('#frate').is(":checked")==false)
-							{
-								document.getElementById('rate').value= Math.round((document.getElementById('count').value)/vclick,3);
-							}		 
-						}
-						
-						break;			 
-					 
- 		case 'count':
-					if($('#fclick').is(":checked")==false) 
-					{
-								 document.getElementById('vclick').value=Math.round(count/rate,3);
-					}
-					
-					if($('#frate').is(":checked")==false)
-					{
-						document.getElementById('rate').value= Math.round(count/vclick,3);
-					}
-					 
-					 if($('#fcash').is(":checked")==false) 
-					{
-						 document.getElementById('cash').value=Math.round(count*price,3);
-					}
-					
-					 if($('#fprice').is(":checked")==false)
-					 {
-								document.getElementById('price').value=Math.round(cash/count,3);
-					}
-					
-					 break;
-					 
-					 
-		case 'vclick':
-					if($('#fcount').is(":checked")==false) 
-					{
-						document.getElementById('count').value=Math.round(rate*vclick);
-						
-						if($('#fcash').is(":checked")==false) 
-						{
-							 document.getElementById('cash').value=Math.round((document.getElementById('count').value)*price,3);
-						}
-						
-						 if($('#fprice').is(":checked")==false)
-					 	{
-								document.getElementById('price').value=Math.round(cash/count,3);
-						}
-					}
-					
-					if($('#frate').is(":checked")==false)
-					{
-						document.getElementById('rate').value= Math.round(count/vclick,3);
-					}
-
-					 break;
-					 
-					 
-		case 'rate': if($('#fcount').is(":checked")==false) 
-					{
-						document.getElementById('count').value=Math.round(rate*vclick);
-						
-						if($('#fcash').is(":checked")==false) 
-						{
-							 document.getElementById('cash').value=Math.round((document.getElementById('count').value)*price,3);
-						}
-					}
-					
-					 break;
-	 	
-		}
-}
 
 function isNumberKey(evt,strng)
   {
@@ -300,30 +113,8 @@ function isNumberKey(evt,strng)
 	multiply(strng);
  }
 }
-function handleCash(input) 
- {
-    if (input.value < 0) input.value = 0;
-    if (input.value > 500) input.value = 500;
-  }
-function handleCount(input) 
- {
-    if (input.value < 0) input.value = 0;
-    if (input.value > 2) input.value = 2;
-  }
-function handleClick(input) 
-{
-    if (input.value < 0) input.value = 0;
-    if (input.value > 75) input.value = 75;
-}
-function handleRate(input) 
-{
-    if (input.value < 0.1) input.value = 0.1;
-    if (input.value > 75) input.value = 75;
-}
+
 jQuery(document).ready(function($){
-$("#cash").keyup(function(){
-   scash.slider('setvalue',$("#cash").val());
-});
 
 var scash = new Slider('#scash', {
        tooltip: 'always',
@@ -395,7 +186,398 @@ $('#fclick').bootstrapSwitch({
              offColor: 'info'
               });
 
+
+$('#fcash').on('switchChange.bootstrapSwitch', function(event, state) {
+
+  if($('#fprice').is(":checked")==true)
+	{
+		$('#fprice').bootstrapSwitch('toggleState');
+	}
+	
+	if($('#fcount').is(":checked")==true)
+	{
+		$('#fcount').bootstrapSwitch('toggleState');
+	}
+	
+
+	return false;
 });
+
+
+$('#fprice').on('switchChange.bootstrapSwitch', function(event, state) {
+
+  if($('#fcash').is(":checked")==true)
+	{
+		$('#fcash').bootstrapSwitch('toggleState');
+	}
+	
+	if($('#fcount').is(":checked")==true)
+	{
+		$('#fcount').bootstrapSwitch('toggleState');
+	}
+	
+
+	return false;
+});
+
+
+$('#fcount').on('switchChange.bootstrapSwitch', function(event, state) {
+
+  
+  if($('#fcount').is(":checked")==true)
+  {
+  	if($('#fcash').is(":checked")==true)
+	{
+		$('#fcash').bootstrapSwitch('toggleState');
+	}
+	
+	if($('#fprice').is(":checked")==true)
+	{
+		$('#fprice').bootstrapSwitch('toggleState');
+	}
+	
+	if($('#fclick').is(":checked")==true)
+	{
+		$('#fclick').bootstrapSwitch('toggleState');
+	}
+	
+	if($('#frate').is(":checked")==true)
+	{
+		$('#frate').bootstrapSwitch('toggleState');
+	}
+  }
+
+	return false;
+});
+
+
+
+$('#frate').on('switchChange.bootstrapSwitch', function(event, state) {
+
+	
+	if($('#fclick').is(":checked")==true)
+	{
+		$('#fclick').bootstrapSwitch('toggleState');
+	}
+	
+	
+	if($('#fcount').is(":checked")==true)
+	{
+		$('#fcount').bootstrapSwitch('toggleState');
+	}
+  
+	return false;
+});
+
+
+
+$('#fclick').on('switchChange.bootstrapSwitch', function(event, state) {
+
+	
+	if($('#frate').is(":checked")==true)
+	{
+		$('#frate').bootstrapSwitch('toggleState');
+	}
+	
+	
+	if($('#fcount').is(":checked")==true)
+	{
+		$('#fcount').bootstrapSwitch('toggleState');
+	}
+  
+	return false;
+});
+
+$('#cash').keyup(function(e)
+{
+	e.preventDefault();
+	scash.setValue(parseInt(this.value));
+	return false;
+});
+
+
+$('#price').keyup(function(e)
+{
+	e.preventDefault();
+	sprice.setValue(parseInt(this.value));
+	return false;
+});
+
+
+$('#count').keyup(function(e)
+{
+	e.preventDefault();
+	scount.setValue(parseInt(this.value));
+	return false;
+});
+
+$('#rate').keyup(function(e)
+{
+	e.preventDefault();
+	srate.setValue(parseInt(this.value));
+	return false;
+});
+
+
+$('#click').keyup(function(e)
+{
+	e.preventDefault();
+	sclick.setValue(parseInt(this.value));
+	return false;
+});
+
+
+function scashset(strng)
+{
+ scash.setValue(parseInt(strng));
+}
+
+
+function spriceset(strng)
+{
+ sprice.setValue(parseInt(strng));
+}
+
+
+function scountset(strng)
+{
+ scount.setValue(parseInt(strng));
+}
+
+
+function srateset(strng)
+{
+ srate.setValue(parseInt(strng));
+}
+
+
+function sclickset(strng)
+{
+ sclick.setValue(parseInt(strng));
+}
+
+});
+
+function multiply(string1)
+{
+	//var cash=document.getElementById('cash').value;
+//	if(cash>=500)
+//		{
+//			document.getElementById('cash').value=50;
+//			
+//		}
+
+	var cash=document.getElementById('cash').value;
+	
+//	var price=document.getElementById('price').value;
+//	if(price>500)
+//		{
+//			document.getElementById('price').value=50;
+//			
+//		}
+	
+	var price=document.getElementById('price').value;
+	
+	//var count=document.getElementById('count').value;
+//	if(count>2)
+//		{
+//			document.getElementById('count').value=2;
+//			
+//		}
+	
+	var count=document.getElementById('count').value;
+	
+	//var rate=document.getElementById('rate').value;
+//	if(rate>75)
+//		{
+//			document.getElementById('rate').value=75;
+//			
+//		}
+		
+	var rate=document.getElementById('rate').value/100;
+	
+	//var vclick=document.getElementById('vclick').value;
+//	if(vclick>10)
+//		{
+//			document.getElementById('vclick').value=10;
+//			var vclick=document.getElementById('vclick').value;
+//		}
+		var vclick=document.getElementById('vclick').value;
+
+
+		
+if(cash==0)
+{
+	
+}
+
+		
+if(price==0)
+{
+	price=1;
+}
+
+		
+if(count==0)
+{
+	count=1;
+}
+		
+if(rate==0)
+{
+	rate=0.01;
+}
+		
+if(vclick==0)
+{
+	vclick=1;
+}
+
+	switch (string1)
+		{
+ 		 case 'cash':
+					 if($('#fprice').is(":checked")==false)
+					 {
+						document.getElementById('price').value=Math.round((document.getElementById('cash').value)/count,3);
+								
+								function callJqueryFunction()
+     							{
+									spriceset(Math.round((document.getElementById('cash').value)/count,3));
+								}
+					}
+					
+					if($('#fcount').is(":checked")==false) 
+					{
+						document.getElementById('count').value=Math.round((document.getElementById('cash').value)/price);
+						//scountset(Math.round((document.getElementById('cash').value)/count,3));
+						
+						if($('#fclick').is(":checked")==false) 
+						{
+							document.getElementById('vclick').value=Math.round((document.getElementById('count').value)/rate,3);
+						}
+					
+						if($('#frate').is(":checked")==false)
+						{
+							document.getElementById('rate').value= Math.round((document.getElementById('count').value)/vclick,3);
+						}
+					}
+					  break;
+					  
+					  
+  		case 'price':  if($('#fcash').is(":checked")==false) 
+						{
+							document.getElementById('cash').value=Math.round(count*(document.getElementById('price').value),3);
+									 
+						}
+						
+						if($('#fcount').is(":checked")==false) 
+						{
+							document.getElementById('count').value=Math.round(cash/(document.getElementById('price').value),3);
+							
+							if($('#fclick').is(":checked")==false) 
+							{
+								document.getElementById('vclick').value=Math.round((document.getElementById('count').value)/rate,3);
+							}
+							
+							if($('#frate').is(":checked")==false)
+							{
+								document.getElementById('rate').value= Math.round((document.getElementById('count').value)/vclick,3);
+							}		 
+						}
+						
+						break;			 
+					 
+ 		case 'count':
+					if($('#fclick').is(":checked")==false) 
+					{
+						document.getElementById('vclick').value=Math.round(count/rate,3);
+					}
+					
+					if($('#frate').is(":checked")==false)
+					{
+						document.getElementById('rate').value= Math.round(count/vclick,3);
+					}
+					 
+					 if($('#fcash').is(":checked")==false) 
+					{
+						 document.getElementById('cash').value=Math.round(count*price,3);
+					}
+					
+					 if($('#fprice').is(":checked")==false)
+					 {
+						document.getElementById('price').value=Math.round(cash/count,3);
+						
+								function callJqueryFunction()
+     							{
+									spriceset(Math.round(cash/count,3));
+								}
+					}
+					
+					 break;
+					 
+					 
+		case 'vclick':
+					if($('#fcount').is(":checked")==false) 
+					{
+						document.getElementById('count').value=Math.round(rate*(document.getElementById('vclick').value));
+						
+						if($('#fcash').is(":checked")==false) 
+						{
+							 document.getElementById('cash').value=Math.round((document.getElementById('count').value)*price,3);
+						}
+						
+						 if($('#fprice').is(":checked")==false)
+					 	{
+								document.getElementById('price').value=Math.round(cash/(document.getElementById('count').value),3);
+								
+								
+								function callJqueryFunction()
+     							{
+									spriceset(Math.round(cash/(document.getElementById('count').value),3));
+								}
+						}
+					}
+					
+					if($('#frate').is(":checked")==false)
+					{
+						document.getElementById('rate').value= Math.round(count/(document.getElementById('vclick').value),3);
+					}
+
+					 break;
+					 
+					 
+		case 'rate': if($('#fcount').is(":checked")==false) 
+					{
+						document.getElementById('count').value=Math.round(rate*vclick);
+						
+						if($('#fcash').is(":checked")==false) 
+						{
+							 document.getElementById('cash').value=Math.round((document.getElementById('count').value)*price,3);
+						}
+						
+						 if($('#fprice').is(":checked")==false)
+					 	{
+								document.getElementById('price').value=Math.round(cash/(document.getElementById('count').value),3);
+								
+								function callJqueryFunction()
+     							{
+									spriceset(Math.round(cash/(document.getElementById('count').value),3));
+								}
+						}
+						
+					}
+					
+					if($('#fclick').is(":checked")==false)
+					{
+						document.getElementById('vclick').value= Math.round(count/rate,3);
+					}
+					
+					 break;
+	 	
+		}
+}
+
+
 </script>
 </head>
 <body><br/>
@@ -410,37 +592,37 @@ $('#fclick').bootstrapSwitch({
 
     <tr>
         <td><h3><?php echo $cash;?></h3></td>
-        <td><input id="fcash" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" checked="checked"></td>
+        <td><input id="fcash" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" ></td>
         <td><input id="scash" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="500000" data-slider-step="1" data-slider-value="1"/></td>
-        <td class="input-container"><input type="text" value="" id="cash" onKeyPress="return isNumberKey(event,'cash')" onChange="handleCash(this);"/> <span class="unit"><?php echo $unit; ?></span></td>
+        <td class="input-container"><input type="text" value="" id="cash" onKeyPress="return isNumberKey(event,'cash')" /> <span class="unit"><?php echo $unit; ?></span></td>
     </tr>
 
     <tr>
         <td><h3><?php echo $price;?></h3></td>
-        <td><input id="fprice" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" checked="checked"></td>
+        <td><input id="fprice" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" ></td>
         <td><input id="sprice" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="500" data-slider-step="1" data-slider-value="1"/></td>
-        <td class="input-container"><input type="text" value="" id="price" onKeyPress="return isNumberKey(event,'price')" onChange="handleCash(this);"/> <span class="unit"><?php echo $unit; ?></span></td><tr/>
+        <td class="input-container"><input type="text" value="" id="price" onKeyPress="return isNumberKey(event,'price')"/> <span class="unit"><?php echo $unit; ?></span></td><tr/>
     </tr>
     
     <tr>
         <td><h3><?php echo $count;?></h3></td>
         <td><input id="fcount" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" checked="checked"></td>
         <td><input id="scount" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="1000" data-slider-step="1" data-slider-value="1"/></td>
-        <td class="input-container"><input type="text" value="" id="count" onKeyPress="return isNumberKey(event,'count')" onChange="handleCount(this);"/></td><tr/>
+        <td class="input-container"><input type="text" value="" id="count" onKeyPress="return isNumberKey(event,'count')" /></td><tr/>
     </tr>
     
     <tr>
         <td><h3><?php echo $rate;?></h3></td>
-        <td><input id="frate" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" checked="checked"></td>
+        <td><input id="frate" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" ></td>
         <td><input id="srate" data-slider-id='ex1Slider' type="text" data-slider-min="0.1" data-slider-max="75" data-slider-step="0.01" data-slider-value="0.01"/></td>
-        <td class="input-container"><input type="text" value="" id="rate" onKeyPress="return isNumberKey(event,'rate')" onChange="handleRate(this);" /><span class="unit">%</span></td></tr>
+        <td class="input-container"><input type="text" value="" id="rate" onKeyPress="return isNumberKey(event,'rate')"  /><span class="unit">%</span></td></tr>
     </tr>
     
     <tr>
         <td><h3><?php echo $click;?></h3></td>
-        <td><input id="fclick" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" checked="checked"></td>
+        <td><input id="fclick" type="checkbox" data-on-color="Success" data-on-text="<?php echo $on; ?>" data-off-color="Success" data-off-text="<?php echo $off; ?>" ></td>
         <td><input id="sclick" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="1" data-slider-value="5"/></td>
-        <td class="input-container"><input type="text" value="" id="vclick" onKeyPress="return isNumberKey(event,'vclick')" onChange="handleClick(this);" /></td></tr>
+        <td class="input-container"><input type="text" value="" id="vclick" onKeyPress="return isNumberKey(event,'vclick')"  /></td></tr>
     </tr>
 </table>
 </div>
